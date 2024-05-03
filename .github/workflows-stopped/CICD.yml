@@ -1,0 +1,28 @@
+name: CI/CD
+
+on: "push"
+
+jobs:
+  Tests:
+    runs-on: ubuntu-latest
+    name: Run Jest tests
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+      - run: npm ci
+      - run: npm run test
+
+
+  deploy:
+    needs: Tests
+    runs-on: ubuntu-latest
+    name: Deploy project
+    # Setup condition for each branch to deploy separated by ||
+    if: github.ref == 'refs/heads/production'
+    steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+        # Describe deployment steps here
+

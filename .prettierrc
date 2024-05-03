@@ -10,5 +10,13 @@
     "plugins": ["@trivago/prettier-plugin-sort-imports"],
     "importOrder": ["^[./]"],
     "importOrderSeparation": true,
-    "importOrderSortSpecifiers": true
+    "importOrderSortSpecifiers": true,
+    "overrides": [
+        {
+            "files": ["*.eslintrc", "*.json", "*.md"],
+            "options": {
+                "trailingComma": "none"
+            }
+        }
+    ]
 }
